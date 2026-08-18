@@ -121,7 +121,6 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                 <input 
                   type="file" 
                   accept="image/*" 
-                  capture="environment" 
                   className="hidden" 
                   ref={fileInputRef}
                   onChange={handlePhotoCapture} 
@@ -143,7 +142,7 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                     className="w-full h-48 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-pink-500 hover:text-pink-500 transition-colors"
                   >
                     <Camera size={32} className="mb-2" />
-                    <span>Tap to take a photo</span>
+                    <span>Take Photo or Choose from Gallery</span>
                   </button>
                 )}
               </div>
