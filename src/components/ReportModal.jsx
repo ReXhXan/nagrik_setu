@@ -154,7 +154,7 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                 <div className="h-48 rounded-lg overflow-hidden border border-gray-300">
                   {location ? (
                     <MapContainer center={location} zoom={16} scrollWheelZoom={false} className="h-full w-full">
-                      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                      <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" />
                       <LocationMarker position={location} setPosition={setLocation} />
                     </MapContainer>
                   ) : (
