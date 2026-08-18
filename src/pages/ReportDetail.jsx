@@ -52,7 +52,7 @@ export const ReportDetail = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-4 pb-20 bg-white min-h-[calc(100vh-4rem)]">
-      <button onClick={() => navigate(-1)} className="flex items-center text-blue-600 mb-4 font-medium">
+      <button onClick={() => navigate(-1)} className="flex items-center text-pink-600 mb-4 font-medium">
         <ArrowLeft size={20} className="mr-1" /> Back
       </button>
 
@@ -70,7 +70,7 @@ export const ReportDetail = () => {
         <button 
           onClick={handleUpvote}
           disabled={hasUpvoted}
-          className={`flex items-center flex-col p-2 rounded-lg border ${hasUpvoted ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+          className={`flex items-center flex-col p-2 rounded-lg border ${hasUpvoted ? 'bg-pink-50 border-pink-200 text-pink-700' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'}`}
         >
           <ThumbsUp size={24} className={hasUpvoted ? 'fill-current' : ''} />
           <span className="text-sm font-bold mt-1">{report.upvotes}</span>
@@ -103,9 +103,9 @@ export const ReportDetail = () => {
         </div>
       </div>
 
-      <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
-        <h3 className="text-lg font-semibold text-blue-900 mb-2">Routing Details</h3>
-        <p className="text-blue-800 text-sm mb-2">
+      <div className="bg-pink-50 rounded-lg p-4 border border-pink-100">
+        <h3 className="text-lg font-semibold text-pink-900 mb-2">Routing Details</h3>
+        <p className="text-pink-800 text-sm mb-2">
           This issue has been routed to: <br/>
           <strong>{report.routedTo?.officerName}</strong> ({report.routedTo?.department}, {report.routedTo?.email})
         </p>

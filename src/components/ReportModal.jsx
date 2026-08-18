@@ -132,7 +132,7 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                     <img src={photoPreview} alt="Preview" className="w-full h-full object-cover" />
                     <button 
                       onClick={() => fileInputRef.current.click()}
-                      className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity"
                     >
                       <Camera className="mr-2" /> Change Photo
                     </button>
@@ -140,7 +140,7 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                 ) : (
                   <button 
                     onClick={() => fileInputRef.current.click()}
-                    className="w-full h-48 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-blue-500 hover:text-blue-500 transition-colors"
+                    className="w-full h-48 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-pink-500 hover:text-pink-500 transition-colors"
                   >
                     <Camera size={32} className="mb-2" />
                     <span>Tap to take a photo</span>
@@ -179,7 +179,7 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                   }, 1500);
                 }}
                 disabled={!photo || !location || loading}
-                className="w-full py-3 bg-blue-600 text-white rounded-lg font-medium disabled:opacity-50 mt-4 flex justify-center items-center"
+                className="w-full py-3 bg-pink-600 text-black rounded-lg font-medium disabled:opacity-50 mt-4 flex justify-center items-center"
               >
                 {loading ? '🤖 AI Analyzing Image...' : 'Next Step'}
               </button>
@@ -190,15 +190,15 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">3. Detected Issue Category</label>
-                <div className="flex items-center justify-between p-3 bg-blue-50 border border-blue-100 rounded-lg">
+                <div className="flex items-center justify-between p-3 bg-pink-50 border border-pink-100 rounded-lg">
                    <div className="flex items-center">
                      <span className="text-xl mr-2">🤖</span>
-                     <span className="font-semibold text-blue-900">{category.replace(/([A-Z])/g, ' $1').trim()}</span>
+                     <span className="font-semibold text-pink-900">{category.replace(/([A-Z])/g, ' $1').trim()}</span>
                    </div>
                    <select 
                      value={category} 
                      onChange={(e) => setCategory(e.target.value)}
-                     className="bg-transparent border-none text-sm text-blue-600 underline cursor-pointer focus:ring-0 p-0 font-medium"
+                     className="bg-transparent border-none text-sm text-pink-600 underline cursor-pointer focus:ring-0 p-0 font-medium"
                    >
                      {CATEGORIES.map(c => <option key={c} value={c}>Change to: {c.replace(/([A-Z])/g, ' $1').trim()}</option>)}
                    </select>
@@ -212,7 +212,7 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows="4" 
-                  className="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border"
+                  className="w-full border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 p-2 border"
                   placeholder="Add any extra details..."
                 ></textarea>
               </div>
@@ -226,7 +226,7 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
                 </button>
                 <button 
                   onClick={() => setStep(3)}
-                  className="flex-[2] py-3 bg-blue-600 text-white rounded-lg font-medium flex justify-center items-center"
+                  className="flex-[2] py-3 bg-pink-600 text-black rounded-lg font-medium flex justify-center items-center"
                 >
                   Review Draft Email
                 </button>
@@ -236,9 +236,9 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
 
           {step === 3 && (
             <div className="space-y-4">
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                <h4 className="font-semibold text-blue-900 mb-2">Routing to Correct Authority:</h4>
-                <div className="text-sm text-blue-800">
+              <div className="bg-pink-50 p-4 rounded-lg border border-pink-100">
+                <h4 className="font-semibold text-pink-900 mb-2">Routing to Correct Authority:</h4>
+                <div className="text-sm text-pink-800">
                   <p><strong>Department:</strong> {getRoutingDetails(category).department}</p>
                   <p><strong>Officer:</strong> {getRoutingDetails(category).officerName}</p>
                   <p><strong>Email:</strong> {getRoutingDetails(category).email}</p>
@@ -275,7 +275,7 @@ Nagrik Setu Citizen Portal`}
                 <button 
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="flex-[2] py-3 bg-green-600 text-white rounded-lg font-medium flex justify-center items-center disabled:opacity-50"
+                  className="flex-[2] py-3 bg-green-600 text-black rounded-lg font-medium flex justify-center items-center disabled:opacity-50"
                 >
                   {loading ? (
                     <span className="flex items-center"><Upload size={18} className="animate-bounce mr-2" /> Sending to BMC...</span>

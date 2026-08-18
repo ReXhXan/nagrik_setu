@@ -66,7 +66,7 @@ export const MapHome = () => {
                     <span className="text-xs text-gray-500">↑ {report.upvotes} upvotes</span>
                     <button 
                       onClick={() => navigate(`/report/${report.id}`)}
-                      className="text-xs text-blue-600 font-semibold"
+                      className="text-xs text-pink-600 font-semibold"
                     >
                       View Details
                     </button>
@@ -78,10 +78,18 @@ export const MapHome = () => {
         ))}
       </MapContainer>
 
+      {/* Floating Header */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[500] pointer-events-none w-[90%] max-w-md">
+        <div className="bg-white/80 backdrop-blur-md px-6 py-4 rounded-2xl shadow-lg border border-white/50 text-center">
+          <h1 className="text-2xl font-display font-bold text-gray-900 tracking-tight">HI BHUBANESWAR 👋</h1>
+          <p className="text-xs font-medium text-gray-600 mt-1 uppercase tracking-wider">Help keep our city clean & safe</p>
+        </div>
+      </div>
+
       {!isModalOpen && (
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[1000] bg-blue-600 text-white rounded-full px-8 py-4 shadow-2xl hover:bg-blue-700 transition-colors flex items-center font-bold text-lg border-4 border-white"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[1000] bg-pink-600 text-black rounded-full px-8 py-4 shadow-2xl hover:bg-pink-700 transition-colors flex items-center font-bold text-lg border-4 border-white"
         >
           <Plus size={24} className="mr-2" /> Report Issue
         </button>
