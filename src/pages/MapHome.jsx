@@ -89,7 +89,7 @@ export const MapHome = () => {
       {!isModalOpen && (
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[1000] bg-pink-600 text-black rounded-full px-8 py-4 shadow-2xl hover:bg-pink-700 transition-colors flex items-center font-bold text-lg border-4 border-white"
+          className="absolute bottom-20 left-1/2 -translate-x-1/2 z-[1000] bg-pink-600 text-black rounded-full px-8 py-4 shadow-2xl hover:bg-pink-700 transition-colors flex items-center font-bold text-lg border-4 border-white"
         >
           <Plus size={24} className="mr-2" /> Report Issue
         </button>
