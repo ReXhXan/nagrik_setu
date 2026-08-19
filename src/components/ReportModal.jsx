@@ -5,6 +5,7 @@ import { uploadPhoto } from '../firebase/storage';
 import { submitReport } from '../firebase/db';
 import { useAuth } from '../context/AuthContext';
 import { getRoutingDetails } from '../utils/email';
+import { categorizeIssueImage } from '../utils/gemini';
 
 const CATEGORIES = ["Pothole", "Waterlogging", "Streetlight", "Garbage", "StrayAnimal", "SewageLeak", "WaterLeak", "Other"];
 
@@ -85,10 +86,18 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
     setError('');
 
     try {
-      // HACKATHON DEMO BYPASS: 
-      // Bypassing Firebase Storage and Firestore completely to ensure it never hangs during the pitch.
-      // We will just simulate a 1.5s delay to make it look like it's uploading/sending.
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const reportData = {
+        category,
+        description,
+        photoUrl: photoPreview,
+        location: {
+          lat: location.lat,
+          lng: location.lng
+        }
+      };
+
+      const userId = currentUser?.uid || 'anonymous_user';
+      await submitReport(reportData, userId);
 
       alert("Report submitted successfully! Notification sent to authority.");
 
@@ -178,15 +187,21 @@ export const ReportModal = ({ isOpen, onClose, onReportSuccess }) => {
               </div>
 
               <button 
-                onClick={() => {
+                onClick={async () => {
                   setLoading(true);
-                  // Simulate ML model analyzing the image
-                  setTimeout(() => {
-                    const randomCat = CATEGORIES[Math.floor(Math.random() * (CATEGORIES.length - 1))];
-                    setCategory(randomCat);
-                    setLoading(false);
+                  setError('');
+                  try {
+                    const detectedCategory = await categorizeIssueImage(photo, photoPreview);
+                    setCategory(detectedCategory);
                     setStep(2);
-                  }, 1500);
+                  } catch (err) {
+                    console.error("AI classification error:", err);
+                    setError("Failed to classify image. Proceeding with manual selection.");
+                    setCategory("Other");
+                    setStep(2);
+                  } finally {
+                    setLoading(false);
+                  }
                 }}
                 disabled={!photo || !location || loading}
                 className="w-full py-3 bg-pink-600 text-black rounded-lg font-medium disabled:opacity-50 mt-4 flex justify-center items-center"
